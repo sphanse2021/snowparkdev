@@ -1,0 +1,3 @@
+snowflake-cli-labs
+snowflake
+snowflake-snowpark-python==1.5.1
