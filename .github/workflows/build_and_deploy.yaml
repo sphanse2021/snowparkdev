@@ -4,7 +4,7 @@ name: Deploy Snowpark Apps
 on:
   push:
     branches:
-      - develop
+      - dev
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
