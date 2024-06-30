@@ -31,6 +31,8 @@ jobs:
       - name: Open Web Client Directory
         run: |
           ls -la
+          cd ./snowparkdev
+          ls -la
 
       - name: Deploy Snowpark apps
         #working-directory: first_snowpark_project
