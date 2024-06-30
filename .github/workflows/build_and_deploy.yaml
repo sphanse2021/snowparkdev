@@ -28,6 +28,10 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
+      - name: Open Web Client Directory
+        run: |
+          ls -la
+
       - name: Deploy Snowpark apps
         #working-directory: first_snowpark_project
         env:
