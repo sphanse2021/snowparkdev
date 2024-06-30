@@ -1,0 +1,3 @@
+snowflake-snowpark-python=1.5.0
+snowflake-cli-labs
+snowflake -U
