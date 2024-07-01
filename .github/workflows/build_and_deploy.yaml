@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          repository: snowparkdev
+          repository: pradeepetl/snowparkdev
           path: dev
           #ref: dev
 
