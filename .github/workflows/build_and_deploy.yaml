@@ -18,7 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          ref: dev
+          repository: snowparkdev
+          path: dev
+          #ref: dev
 
       - name: Setup Python 3.10
         uses: actions/setup-python@v4
