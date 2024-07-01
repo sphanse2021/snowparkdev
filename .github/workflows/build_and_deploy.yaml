@@ -27,8 +27,11 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install Python packages
-        run: pip install -r requirements.txt
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v2.2.0
+        with:
+          activate-environment: snowpark
+          environment-file: environment.yml
 
       - name: Deploy Snowpark apps
         working-directory: first_snowpark_project
