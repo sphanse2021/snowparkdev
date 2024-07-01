@@ -24,6 +24,10 @@ jobs:
           activate-environment: snowpark_demo
           environment-file: environment.yml
 
+      - name: Conda info
+        shell: bash -el {0}
+        run: conda info
+
 
   deploy:
     runs-on: ubuntu-latest
