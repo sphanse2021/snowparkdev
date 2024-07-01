@@ -21,7 +21,7 @@ jobs:
       - name: Setup Conda
         uses: conda-incubator/setup-miniconda@v2.2.0
         with:
-          activate-environment: snowpark
+          activate-environment: snowpark_demo
           environment-file: environment.yml
 
 
@@ -36,6 +36,9 @@ jobs:
         with:
           ref: dev
 
+      - name: Install Python packages
+        run: pip install -r requirements.txt
+
       - name: Deploy Snowpark apps
         #working-directory: first_snowpark_project
         env:
@@ -45,10 +48,10 @@ jobs:
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
-        run: conda init
-        #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
-      - name: condainit
-        run: conda activate snowpark
-      - name: run snow
-        run: snow snowpark build
+        #run: conda init
+        run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+      # - name: condainit
+      #   run: conda activate snowpark
+      # - name: run snow
+      #   run: snow snowpark build
            
