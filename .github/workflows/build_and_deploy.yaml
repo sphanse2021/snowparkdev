@@ -21,7 +21,11 @@ jobs:
           repository: pradeepetl/snowparkdev
           #path: dev
           ref: dev
-
+      - name: git
+        run: |
+          git config --global --add safe.directory /home/runner/work/snowparkdev
+          git init /home/runner/work/snowparkdev
+          
       - name: Setup Python 3.10
         uses: actions/setup-python@v4
         with:
@@ -29,12 +33,6 @@ jobs:
 
       - name: Install Python packages
         run: pip install -r requirements.txt
-
-      - name: Open Web Client Directory
-        run: |
-          ls -la
-          cd ./snowparkdev
-          ls -la
 
       - name: Deploy Snowpark apps
         #working-directory: first_snowpark_project
@@ -45,4 +43,4 @@ jobs:
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
-        run: python deploy_snowpark_apps.py $GITHUB_WORKSPACE
+        run: python deploy_snowpark_app.py $GITHUB_WORKSPACE
