@@ -52,8 +52,8 @@ jobs:
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
-        #run: conda init
-        run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+        run: snow snowpark build
+        #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
       # - name: condainit
       #   run: conda activate snowpark
       # - name: run snow
