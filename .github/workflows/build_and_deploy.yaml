@@ -56,7 +56,7 @@ jobs:
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
       - name: deploy code
         working-directory: first_snowpark_project
-        run: snow snowpark deploy --replace --temporary-connection --account $SNOWFLAKE_ACCOUNT --user $SNOWFLAKE_USER --role $SNOWFLAKE_ROLE --warehouse $SNOWFLAKE_WAREHOUSE --database DEMO_DB
+        run: snow snowpark deploy --replace --temporary-connection --account $SNOWFLAKE_ACCOUNT --user pradeep --role $SNOWFLAKE_ROLE --warehouse $SNOWFLAKE_WAREHOUSE --database DEMO_DB
       # - name: run snow
       #   run: snow snowpark build
            
