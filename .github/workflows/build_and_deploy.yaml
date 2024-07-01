@@ -37,6 +37,8 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
         run: conda activate snowpark
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+      - name: condainit
+        run: conda init
       - name: run snow
         run: snow snowpark build
            
