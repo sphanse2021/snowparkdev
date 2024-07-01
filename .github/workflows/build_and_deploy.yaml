@@ -55,6 +55,7 @@ jobs:
         run: snow snowpark build
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
       - name: deploy code
+        working-directory: first_snowpark_project
         run: snow snowpark deploy
       # - name: run snow
       #   run: snow snowpark build
