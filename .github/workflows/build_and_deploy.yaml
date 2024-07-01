@@ -44,7 +44,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Deploy Snowpark apps
-        #working-directory: first_snowpark_project
+        working-directory: first_snowpark_project
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
@@ -54,8 +54,8 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
         run: snow snowpark build
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
-      # - name: condainit
-      #   run: conda activate snowpark
+      - name: deploy code
+        run: snow snowpark deploy
       # - name: run snow
       #   run: snow snowpark build
            
