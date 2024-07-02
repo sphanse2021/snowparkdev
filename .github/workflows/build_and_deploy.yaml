@@ -64,7 +64,8 @@ jobs:
         working-directory: first_snowpark_project
         run: |
             snow snowpark \
-                 deploy \
+                 deploy --replace \
+                  -- temporary-connection \
                   --account $SNOWFLAKE_ACCOUNT \
                   --user $SNOWFLAKE_USER \
                   --database $SNOWFLAKE_DATABASE \
