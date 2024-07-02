@@ -58,10 +58,6 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
-      - name: build Snowpark apps
-        working-directory: first_snowpark_project
-        run: snow build
-
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
 
       - name: cliaction
@@ -75,6 +71,10 @@ jobs:
         run: |
            snow --version
            snow connection test
+
+      - name: build Snowpark apps
+        working-directory: first_snowpark_project
+        run: snow snowpark build
 
       - name: deploy code
         working-directory: first_snowpark_project
