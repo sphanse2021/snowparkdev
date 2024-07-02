@@ -67,7 +67,7 @@ jobs:
                  deploy --replace \
                   --temporary-connection \
                   --account $SNOWFLAKE_ACCOUNT \
-                  --user "pradeep" \
+                  --user pradeep \
                   --database $SNOWFLAKE_DATABASE \
                   --role $SNOWFLAKE_ROLE \
                   --warehouse "COMPUTE_WH"
