@@ -53,13 +53,13 @@ jobs:
           # SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           # SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          #SNOWFLAKE_CONNECTIONS_my_test_connection_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_CONNECTIONS_my_test_connection_USER: ${{ secrets.SNOWFLAKE_USER }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_DATABASE: "demo_db"
-        run: echo $SNOWFLAKE_CONNECTIONS_my_test_connection_ACCOUNT
-        
+        run: echo $SNOWFLAKE_CONNECTIONS_my_test_connection_USER
+
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
 
       - name: cliaction
