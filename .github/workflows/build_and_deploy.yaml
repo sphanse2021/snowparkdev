@@ -60,6 +60,19 @@ jobs:
           SNOWFLAKE_DATABASE: "demo_db"
         run: snow snowpark build
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+
+      - name: cliaction
+        uses: Snowflake-Labs/snowflake-cli-action@v1
+        with:
+            cli-version: "latest"
+            default-config-file-path: "config.toml"
+        
+          # Use the CLI
+      - name: Test version
+        run: |
+           snow --version
+           snow connection test
+
       - name: deploy code
         working-directory: first_snowpark_project
         run: |
