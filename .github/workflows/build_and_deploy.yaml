@@ -69,7 +69,7 @@ jobs:
                   --user $SNOWFLAKE_USER \
                   --database $SNOWFLAKE_DATABASE \
                   --role $SNOWFLAKE_ROLE \
-                  --warehouse $SNOWFLAKE_WAREHOUSE
+                  --warehouse "COMPUTE_WH"
       # - name: run snow
       #   run: snow snowpark build
            
