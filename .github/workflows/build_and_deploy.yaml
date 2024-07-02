@@ -78,7 +78,7 @@ jobs:
       
       - name: build Snowpark apps
         working-directory: first_snowpark_project
-        run: snow snowpark deploy
+        run: snow snowpark deploy --replace
 
       # - name: deploy code
       #   working-directory: first_snowpark_project
