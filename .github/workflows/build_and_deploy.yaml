@@ -15,12 +15,12 @@ env:
   # SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
   # SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
   # SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
-  SNOWFLAKE_CONNECTIONS_my_test_connection_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-  SNOWFLAKE_CONNECTIONS_my_test_connection_USER: ${{ secrets.SNOWFLAKE_USER }}
-  SNOWFLAKE_CONNECTIONS_my_test_connection_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
-  SNOWFLAKE_CONNECTIONS_my_test_connection_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
-  SNOWFLAKE_CONNECTIONS_my_test_connection_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
-  SNOWFLAKE_CONNECTIONS_my_test_connection_DATABASE: "demo_db"
+  SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+  SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+  SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+  SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+  SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
+  SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
 
 jobs:
   build:
@@ -80,11 +80,12 @@ jobs:
             snow snowpark \
                  deploy --replace \
                   --temporary-connection \
-                  --account $SNOWFLAKE_ACCOUNT \
-                  --user pradeep \
-                  --database $SNOWFLAKE_DATABASE \
-                  --role $SNOWFLAKE_ROLE \
-                  --warehouse "COMPUTE_WH"
+                  --account ${{ env.SNOWFLAKE_ACCOUNT }} \
+                  --user ${{ env.SNOWFLAKE_USER }} \
+                  --database ${{ env.SNOWFLAKE_DATABASE }} \
+                  --role ${{ env.SNOWFLAKE_ROLE }} \
+                  --warehouse ${{ env.SNOWFLAKE_WAREHOUSE }}
+                  --password  ${{ env.SNOWFLAKE_PASSWORD }}
       # - name: run snow
       #   run: snow snowpark build
            
