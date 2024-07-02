@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Deploy Snowpark apps
-        #working-directory: first_snowpark_project
+        working-directory: first_snowpark_project
         env:
           SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
@@ -39,4 +39,4 @@ jobs:
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
-        run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+        run: python deploy_snowpark_app.py $GITHUB_WORKSPACE
