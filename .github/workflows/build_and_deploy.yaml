@@ -64,10 +64,10 @@ jobs:
         working-directory: first_snowpark_project
         run: |
             snow snowpark deploy --account $SNOWFLAKE_ACCOUNT \
-            --user $SNOWFLAKE_USER \
-            --database $SNOWFLAKE_DATABASE \
-            --role $SNOWFLAKE_ROLE \
-            --warehouse $SNOWFLAKE_WAREHOUSE
+             --user $SNOWFLAKE_USER \
+             --database $SNOWFLAKE_DATABASE \
+             --role $SNOWFLAKE_ROLE \
+             --warehouse $SNOWFLAKE_WAREHOUSE
       # - name: run snow
       #   run: snow snowpark build
            
