@@ -53,7 +53,7 @@ jobs:
           # SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           # SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
-          SNOWFLAKE_CONNECTIONS_my_test_connection_USER: ${{ secrets.SNOWFLAKE_USER }}
+          #SNOWFLAKE_CONNECTIONS_my_test_connection_USER: ${{ secrets.SNOWFLAKE_USER }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_CONNECTIONS_my_test_connection_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
