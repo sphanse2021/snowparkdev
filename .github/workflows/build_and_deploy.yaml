@@ -58,7 +58,7 @@ jobs:
 
       - name: Deploy Snowpark apps
         working-directory: first_snowpark_project
-        run: echo $SNOWFLAKE_CONNECTIONS_my_test_connection_USER
+        run: echo ${{ env.SNOWFLAKE_USER }}
 
         #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
 
