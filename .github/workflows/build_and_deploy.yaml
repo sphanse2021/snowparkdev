@@ -75,19 +75,23 @@ jobs:
       - name: build Snowpark apps
         working-directory: first_snowpark_project
         run: snow snowpark build
-
-      - name: deploy code
+      
+      - name: build Snowpark apps
         working-directory: first_snowpark_project
-        run: |
-            snow snowpark \
-                 deploy --replace \
-                  --temporary-connection \
-                  --account ${{ env.SNOWFLAKE_ACCOUNT }} \
-                  --username ${{ env.SNOWFLAKE_USER }} \
-                  --database ${{ env.SNOWFLAKE_DATABASE }} \
-                  --role ${{ env.SNOWFLAKE_ROLE }} \
-                  --warehouse ${{ env.SNOWFLAKE_WAREHOUSE }}
-                  --password  ${{ env.SNOWFLAKE_PASSWORD }}
+        run: snow snowpark deploy
+
+      # - name: deploy code
+      #   working-directory: first_snowpark_project
+      #   run: |
+      #       snow snowpark \
+      #            deploy --replace \
+      #             --temporary-connection \
+      #             --account ${{ env.SNOWFLAKE_ACCOUNT }} \
+      #             --username ${{ env.SNOWFLAKE_USER }} \
+      #             --database ${{ env.SNOWFLAKE_DATABASE }} \
+      #             --role ${{ env.SNOWFLAKE_ROLE }} \
+      #             --warehouse ${{ env.SNOWFLAKE_WAREHOUSE }}
+      #             --password  ${{ env.SNOWFLAKE_PASSWORD }}
       # - name: run snow
       #   run: snow snowpark build
            
