@@ -58,11 +58,13 @@ jobs:
           SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE }}
           SNOWFLAKE_DATABASE: "demo_db"
-        #run: snow snowpark build
-        run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
-      # - name: deploy code
-      #   working-directory: first_snowpark_project
-      #   run: snow snowpark deploy --account $SNOWFLAKE_ACCOUNT --user $SNOWFLAKE_USER --database $SNOWFLAKE_DATABASE --role $SNOWFLAKE_ROLE --warehouse $SNOWFLAKE_WAREHOUSE
+        run: snow snowpark build
+        #run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+      - name: deploy code
+        working-directory: first_snowpark_project
+        run: snow snowpark deploy --account $SNOWFLAKE_ACCOUNT --user $SNOWFLAKE_USER \
+            --database $SNOWFLAKE_DATABASE --role $SNOWFLAKE_ROLE \
+            --warehouse $SNOWFLAKE_WAREHOUSE
       # - name: run snow
       #   run: snow snowpark build
            
