@@ -5,7 +5,7 @@ name: snowpark_demo
 channels:
   - snowflake
 dependencies:
-  - python=3.9
+  - python=3.8
   - openssl=3.0.9  # Addresses this issue with oscrypto: https://github.com/wbond/oscrypto/issues/75
   - pip
   - pip:
