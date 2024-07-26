@@ -12,6 +12,9 @@ from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode 
 
 #conn = snowflake.connector.connect()
 
+print("****** snowflake account ******")
+print(f'$SNOWFLAKE_ACCOUNT')
+
 conn = snowflake.connector.connect(
     user=f'$SNOWFLAKE_USER',
     password=f'$SNOWFLAKE_PASSWORD',
