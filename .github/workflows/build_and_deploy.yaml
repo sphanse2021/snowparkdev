@@ -40,3 +40,7 @@ jobs:
           SNOWFLAKE_WAREHOUSE: ${{ secrets.SNOWFLAKE_WAREHOUSE_DEV }}
           SNOWFLAKE_DATABASE: ${{ secrets.SNOWFLAKE_DATABASE_DEV }}
         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
+      
+      - name: Deploy Snowpark tasks
+        working-directory: first_snowpark_project
+        run: python create_task.py

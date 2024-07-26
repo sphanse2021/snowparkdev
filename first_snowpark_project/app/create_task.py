@@ -13,11 +13,11 @@ from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode 
 conn = snowflake.connector.connect()
 
 conn = snowflake.connector.connect(
-    user='$SNOWFLAKE_USER',
-    password='$SNOWFLAKE_PASSWORD',
-    account='$SNOWFLAKE_ACCOUNT',
-    warehouse='$SNOWFLAKE_WAREHOUSE',
-    database='$SNOWFLAKE_DATABASE')
+    user=f'$SNOWFLAKE_USER',
+    password=f'$SNOWFLAKE_PASSWORD',
+    account=f'$SNOWFLAKE_ACCOUNT',
+    warehouse=f'$SNOWFLAKE_WAREHOUSE',
+    database=f'$SNOWFLAKE_DATABASE')
 
 print("connection established")
 print(conn)
