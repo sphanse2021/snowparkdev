@@ -6,6 +6,7 @@ import procedures
 from snowflake.snowpark import Session
 from snowflake.snowpark.types import StringType
 from snowflake.core.task.context import TaskContext
+import os
 
 from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode , DAGTaskBranch
 
@@ -13,7 +14,7 @@ from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode 
 #conn = snowflake.connector.connect()
 
 print("****** snowflake account ******")
-print(f"$SNOWFLAKE_ACCOUNT")
+os.system(f"$SNOWFLAKE_ACCOUNT")
 
 conn = snowflake.connector.connect(
     user=f'$SNOWFLAKE_USER',
