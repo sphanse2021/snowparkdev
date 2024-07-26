@@ -20,7 +20,7 @@ jobs:
         with:
           repository: pradeepetl/snowparkdev
           #path: dev
-          ref: dev
+          ref: qa
           
       - name: Setup Python 3.9
         uses: actions/setup-python@v4
