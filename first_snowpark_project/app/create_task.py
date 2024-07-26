@@ -10,7 +10,7 @@ from snowflake.core.task.context import TaskContext
 from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode , DAGTaskBranch
 
 
-conn = snowflake.connector.connect()
+#conn = snowflake.connector.connect()
 
 conn = snowflake.connector.connect(
     user=f'$SNOWFLAKE_USER',
