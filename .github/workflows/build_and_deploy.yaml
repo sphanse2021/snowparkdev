@@ -42,5 +42,5 @@ jobs:
         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark_project
       
       - name: Deploy Snowpark tasks
-        working-directory: first_snowpark_project
+        working-directory: first_snowpark_project/app
         run: python create_task.py
