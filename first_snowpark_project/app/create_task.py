@@ -11,17 +11,17 @@ import os
 from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode , DAGTaskBranch
 
 
-#conn = snowflake.connector.connect()
+conn = snowflake.connector.connect()
 
 print("****** snowflake account ******")
-print("snow account here"+os.environ.get("SNOWFLAKE_ACCOUNT"))
+#print("snow account here"+os.environ.get("SNOWFLAKE_ACCOUNT"))
 
-conn = snowflake.connector.connect(
-    user=os.environ.get('SNOWFLAKE_USER'),
-    password=os.environ.get('SNOWFLAKE_PASSWORD'),
-    account=os.environ.get("SNOWFLAKE_ACCOUNT"),
-    warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
-    database=os.environ.get('SNOWFLAKE_DATABASE'))
+# conn = snowflake.connector.connect(
+#     user=os.environ.get('SNOWFLAKE_USER'),
+#     password=os.environ.get('SNOWFLAKE_PASSWORD'),
+#     account=os.environ.get("SNOWFLAKE_ACCOUNT"),
+#     warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
+#     database=os.environ.get('SNOWFLAKE_DATABASE'))
 
 print("connection established")
 print(conn)
@@ -38,7 +38,7 @@ tasks = root.databases["demo_db"].schemas['public'].tasks
 #tasks.create(my_task)
 
 # create dag  
-with DAG("my_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_location="@dev_deployment") as dag:
+with DAG("my_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_location="@dev_deployment",warehouse="compute_wh") as dag:
   dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
     input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
