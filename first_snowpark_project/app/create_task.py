@@ -17,11 +17,11 @@ print("****** snowflake account ******")
 print("snow account here"+os.environ.get("SNOWFLAKE_ACCOUNT"))
 
 conn = snowflake.connector.connect(
-    user=f'$SNOWFLAKE_USER',
-    password=f'$SNOWFLAKE_PASSWORD',
-    account=f'$SNOWFLAKE_ACCOUNT',
-    warehouse=f'$SNOWFLAKE_WAREHOUSE',
-    database=f'$SNOWFLAKE_DATABASE')
+    user=os.environ.get('SNOWFLAKE_USER'),
+    password=os.environ.get('SNOWFLAKE_PASSWORD'),
+    account=os.environ.get("SNOWFLAKE_ACCOUNT"),
+    warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
+    database=os.environ.get('SNOWFLAKE_DATABASE'))
 
 print("connection established")
 print(conn)
