@@ -22,7 +22,8 @@ conn = snowflake.connector.connect(
     account=os.environ.get("SNOWFLAKE_ACCOUNT"),
     warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
     database=os.environ.get('SNOWFLAKE_DATABASE'),
-    schema=os.environ.get('SNOWFLAKE_SCHEMA'))
+    schema=os.environ.get('SNOWFLAKE_SCHEMA'),
+    role=os.environ.get('SNOWFLAKE_ROLE'))
 
 print("connection established")
 print(conn)
