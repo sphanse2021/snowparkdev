@@ -16,6 +16,7 @@ from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode 
 print("****** snowflake account ******")
 #print("snow account here"+os.environ.get("SNOWFLAKE_ACCOUNT"))
 
+
 conn = snowflake.connector.connect(
     user=os.environ.get('SNOWFLAKE_USER'),
     password=os.environ.get('SNOWFLAKE_PASSWORD'),
@@ -40,7 +41,7 @@ tasks = root.databases["demo_db"].schemas['public'].tasks
 #tasks.create(my_task)
 
 # create dag  
-with DAG("your_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_location='@dev_deployment',warehouse="compute_wh") as dag:
+with DAG("my_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_location='@dev_deployment',warehouse="compute_wh") as dag:
   dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
     input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=['@dev_deployment/my_snowpark_project/app.zip'],\
     stage_location='@dev_deployment'),warehouse="compute_wh")
@@ -104,38 +105,38 @@ with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location="@dev_de
   
 #   # Return value from the task.
   
-def send_task_value(session:Session) -> None:
-  from snowflake.core.task.context import TaskContext
-  # processing by writing code.
-  context = TaskContext(Session)
-  context.set_return_value("value passed by task-2")
+# def send_task_value(session:Session) -> None:
+#   from snowflake.core.task.context import TaskContext
+#   # processing by writing code.
+#   context = TaskContext(Session)
+#   context.set_return_value("value passed by task-2")
     
-def receive_task_value(session:Session) -> None:
-  # processing by writing code.
-  context = TaskContext(Session)
-  return_value = context.get_predecessor_return_value("my_hello_task")
-  #return return_value
+# def receive_task_value(session:Session) -> None:
+#   # processing by writing code.
+#   context = TaskContext(Session)
+#   return_value = context.get_predecessor_return_value("my_hello_task")
+#   #return return_value
     
   
-with DAG("my_dag_send_task_value",schedule=timedelta(days=1),stage_location="@dev_deployment",packages=["snowflake-snowpark-python"]) as dag:
+# with DAG("my_dag_send_task_value",schedule=timedelta(days=1),stage_location="@dev_deployment",packages=["snowflake-snowpark-python"]) as dag:
   
-  dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(send_task_value,\
-  packages=["snowflake-snowpark-python","snowflake"],\
-    stage_location="@dev_deployment"),warehouse="compute_wh")
+#   dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(send_task_value,\
+#   packages=["snowflake-snowpark-python","snowflake"],\
+#     stage_location="@dev_deployment"),warehouse="compute_wh")
   
-  # dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.test_procedure,\
-  #   packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
-  #   stage_location="@dev_deployment"),warehouse="compute_wh")
+#   # dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.test_procedure,\
+#   #   packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+#   #   stage_location="@dev_deployment"),warehouse="compute_wh")
   
-  dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(receive_task_value,\
-  packages=["snowflake-snowpark-python"],\
-  stage_location="@dev_deployment"),warehouse="compute_wh")
+#   dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(receive_task_value,\
+#   packages=["snowflake-snowpark-python"],\
+#   stage_location="@dev_deployment"),warehouse="compute_wh")
     
-  dag_task_1 >> dag_task_2
+#   dag_task_1 >> dag_task_2
   
-  schema = root.databases["demo_db"].schemas["public"]
-  dag_op = DAGOperation(schema)
-  dag_op.deploy(dag,CreateMode.or_replace)
+#   schema = root.databases["demo_db"].schemas["public"]
+#   dag_op = DAGOperation(schema)
+#   dag_op.deploy(dag,CreateMode.or_replace)
   
   
 
