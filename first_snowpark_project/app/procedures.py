@@ -34,6 +34,8 @@ def test_procedure(session: Session) -> str:
 def test_procedure_two(session: Session) -> str:
     return "Test procedure"
 
+def execute_sql_statements(session: Session) -> None:
+    session.sql("EXECUTE IMMEDIATE FROM @dev_deployment/my_snowpark_project/test.sql").collect()
 
 # For local debugging
 # Beware you may need to type-convert arguments if you add input parameters

@@ -11,20 +11,20 @@ import os
 from snowflake.core.task.dagv1 import DAG , DAGTask , DAGOperation , CreateMode , DAGTaskBranch
 
 
-#conn = snowflake.connector.connect()
+conn = snowflake.connector.connect()
 
 print("****** snowflake account ******")
 #print("snow account here"+os.environ.get("SNOWFLAKE_ACCOUNT"))
 
 
-conn = snowflake.connector.connect(
-    user=os.environ.get('SNOWFLAKE_USER'),
-    password=os.environ.get('SNOWFLAKE_PASSWORD'),
-    account=os.environ.get("SNOWFLAKE_ACCOUNT"),
-    warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
-    database=os.environ.get('SNOWFLAKE_DATABASE'),
-    schema=os.environ.get('SNOWFLAKE_SCHEMA'),
-    role=os.environ.get('SNOWFLAKE_ROLE'))
+# conn = snowflake.connector.connect(
+#     user=os.environ.get('SNOWFLAKE_USER'),
+#     password=os.environ.get('SNOWFLAKE_PASSWORD'),
+#     account=os.environ.get("SNOWFLAKE_ACCOUNT"),
+#     warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
+#     database=os.environ.get('SNOWFLAKE_DATABASE'),
+#     schema=os.environ.get('SNOWFLAKE_SCHEMA'),
+#     role=os.environ.get('SNOWFLAKE_ROLE'))
 
 print("connection established")
 print(conn)
@@ -63,22 +63,23 @@ with DAG("my_dag",schedule=timedelta(days=1),use_func_return_value=True,stage_lo
   schema = root.databases["demo_db"].schemas["public"]
   dag_op = DAGOperation(schema)
   dag_op.deploy(dag,CreateMode.or_replace)
-
-
-# execute dag using task branch
-
-def task_brach_condition(session: Session) -> str:
-  # write conditon
-  return "my_test_task3"
-
-with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location="@dev_deployment",packages=["snowflake-snowpark-python"]) as dag:
-  dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
-  input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
-    stage_location="@dev_deployment"),warehouse="compute_wh")
   
-  # dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.test_procedure,\
-  #   packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
-  #   stage_location="@dev_deployment"),warehouse="compute_wh")
+  
+  
+  # create dag task branch
+  
+  def task_branch_condition(session:Session) -> str:
+    # Logic to process data.
+    return "my_test_task3"
+  
+with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location='@dev_deployment',warehouse="compute_wh",use_func_return_value=True,packages=["snowflake-snowpark-python"]) as dag:
+  # dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.hello_procedure,args=["pradeep"],\
+  #   input_types=[StringType()],return_type=StringType(), packages=["snowflake-snowpark-python"],imports=['@dev_deployment/my_snowpark_project/app.zip'],\
+  #   stage_location='@dev_deployment'),warehouse="compute_wh")
+  
+  dag_task_1 =  DAGTask("my_hello_task",StoredProcedureCall(procedures.test_procedure,\
+    packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
+    stage_location="@dev_deployment"),warehouse="compute_wh")
   
   dag_task_2 =  DAGTask("my_test_task",StoredProcedureCall(procedures.test_procedure,\
     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
@@ -92,7 +93,7 @@ with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location="@dev_de
     packages=["snowflake-snowpark-python"],imports=["@dev_deployment/my_snowpark_project/app.zip"],\
     stage_location="@dev_deployment"),warehouse="compute_wh")
   
-  dag_task_branch = DAGTaskBranch("task_branch",task_brach_condition,warehouse="compute_wh")
+  dag_task_branch = DAGTaskBranch("task_branch",task_branch_condition,warehouse="compute_wh")
   
   dag_task_1 >> dag_task_2 >> dag_task_branch
   
@@ -101,8 +102,14 @@ with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location="@dev_de
   schema = root.databases["demo_db"].schemas["public"]
   dag_op = DAGOperation(schema)
   dag_op.deploy(dag,CreateMode.or_replace)
-  
-  
+
+
+
+
+
+
+
+
 #   # Return value from the task.
   
 # def send_task_value(session:Session) -> None:
@@ -139,25 +146,6 @@ with DAG("my_dag_task_branch",schedule=timedelta(days=1),stage_location="@dev_de
 #   dag_op.deploy(dag,CreateMode.or_replace)
   
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
