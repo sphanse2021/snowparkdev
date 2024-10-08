@@ -87,7 +87,7 @@ jobs:
                  deploy --replace \
                   --temporary-connection \
                   --account $SNOWFLAKE_ACCOUNT \
-                  --user $SNOWFLAKE_USER \
+                  --user BADGEFOUR \
                   --database $SNOWFLAKE_DATABASE \
                   --role $SNOWFLAKE_ROLE \
                   --warehouse "COMPUTE_WH"
