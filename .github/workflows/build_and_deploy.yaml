@@ -68,11 +68,11 @@ jobs:
         # run: echo $SNOWFLAKE_CONNECTIONS_my_test_connection_ACCOUNT
         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark2_project
 
-      - name: cliaction
-        uses: Snowflake-Labs/snowflake-cli-action@v1
-        with:
-            cli-version: "latest"
-            default-config-file-path: "config.toml"
+      #- name: cliaction
+      #  uses: Snowflake-Labs/snowflake-cli-action@v1
+      #  with:
+      #      cli-version: "latest"
+      #      default-config-file-path: "config.toml"
         
           # Use the CLI
       - name: Test version
