@@ -1,0 +1,6 @@
+README.md
+setup.py
+Example_Snowpark_Python_project.egg-info/PKG-INFO
+Example_Snowpark_Python_project.egg-info/SOURCES.txt
+Example_Snowpark_Python_project.egg-info/dependency_links.txt
+Example_Snowpark_Python_project.egg-info/top_level.txt
