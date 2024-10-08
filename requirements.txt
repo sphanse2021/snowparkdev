@@ -1,4 +1,4 @@
-snowflake-cli-labs
+snowflake-cli-labs --include-deps
 snowflake
 snowflake-snowpark-python
 snowflake-connector-python
