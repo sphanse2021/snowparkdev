@@ -75,10 +75,10 @@ jobs:
       #      default-config-file-path: "config.toml"
         
           # Use the CLI
-      - name: Test version
-        run: |
-           snow --version
-           snow connection test
+      #- name: Test version
+      #  run: |
+      #     snow --version
+      #     snow connection test
 
       - name: deploy code
         working-directory: first_snowpark2_project
