@@ -1,4 +1,4 @@
-default_connection_name = "trial" 
+default_connection_name = "default" 
 
 [cli.logs]
 save_logs = true
@@ -6,7 +6,7 @@ path = "/home/codespace/.config/snowflake/logs"
 level = "info"
 
 [connections]
-[connections.trial]
+[connections.default]
 account = "pbzsblp-dev_account"
 user = "BADGEFOUR"
 password = "44Badge44D"

@@ -75,7 +75,7 @@ jobs:
            snow connection test
 
       - name: deploy code
-        working-directory: first_snowpark_project
+        working-directory: first_snowpark2_project
         run: |
             snow snowpark \
                  deploy --replace \
