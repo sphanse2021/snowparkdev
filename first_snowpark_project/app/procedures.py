@@ -17,16 +17,25 @@ from __future__ import annotations
 import sys
 
 from common import print_hello
+#from first_snowpark_project.app.common import print_hello
 from snowflake.snowpark import Session
+
+
 
 
 def hello_procedure(session: Session, name: str) -> str:
     return print_hello(name)
+    #return "Test procedure"
 
 
 def test_procedure(session: Session) -> str:
     return "Test procedure"
 
+def test_procedure_two(session: Session) -> str:
+    return "Test procedure"
+
+def execute_sql_statements(session: Session) -> None:
+    session.sql("EXECUTE IMMEDIATE FROM @dev_deployment/my_snowpark_project/test.sql").collect()
 
 # For local debugging
 # Beware you may need to type-convert arguments if you add input parameters

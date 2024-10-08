@@ -1,0 +1,1 @@
+create table demo_db.public.test_table(a varchar);
