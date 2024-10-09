@@ -1,8 +1,16 @@
-default_connection_name = "my_test_connection" 
+default_connection_name = "default" 
+
+[cli.logs]
+save_logs = true
+path = "/home/codespace/.config/snowflake/logs"
+level = "info"
+
 [connections]
-[connections.my_test_connection]
-account = "esahiuu-tz70369"
-user = "pradeep"
-password = "Abcd067$"
+[connections.default]
+account = "pbzsblp-dev_account"
+user = "BADGEFOUR"
+password = "44Badge44D"
 database = "DEMO_DB"
 schema = "PUBLIC"
+warehouse = "COMPUTE_WH"
+role = "ACCOUNTADMIN"
