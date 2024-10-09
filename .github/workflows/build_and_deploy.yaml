@@ -80,17 +80,17 @@ jobs:
       #     snow --version
       #     snow connection test
 
-      - name: deploy code
-        working-directory: first_snowpark2_project
-        run: |
-            snow snowpark \
-                 deploy --replace \
-                  --temporary-connection \
-                  --account $SNOWFLAKE_ACCOUNT \
-                  --user BADGEFOUR \
-                  --database $SNOWFLAKE_DATABASE \
-                  --role $SNOWFLAKE_ROLE \
-                  --warehouse "COMPUTE_WH"
+      #- name: deploy code
+      #  working-directory: first_snowpark2_project
+      #  run: |
+      #      snow snowpark \
+      #           deploy --replace \
+      #            --temporary-connection \
+      #            --account $SNOWFLAKE_ACCOUNT \
+      #            --user BADGEFOUR \
+      #            --database $SNOWFLAKE_DATABASE \
+      #            --role $SNOWFLAKE_ROLE \
+      #            --warehouse "COMPUTE_WH"
       # - name: run snow
       #   run: snow snowpark build
            
