@@ -14,3 +14,12 @@ database = "DEMO_DB"
 schema = "PUBLIC"
 warehouse = "COMPUTE_WH"
 role = "ACCOUNTADMIN"
+
+[connections.dev]
+account = "pbzsblp-dev_account"
+user = "BADGEFOUR"
+password = "44Badge44D"
+database = "DEMO_DB"
+schema = "PUBLIC"
+warehouse = "COMPUTE_WH"
+role = "ACCOUNTADMIN"
