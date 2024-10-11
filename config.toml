@@ -7,9 +7,9 @@ level = "info"
 
 [connections]
 [connections.default]
-account = "pbzsblp-dev_account"
+account = "pbzsblp-qmb81630"
 user = "BADGEFOUR"
-password = "44Badge44D"
+password = "44Badge44"
 database = "DEMO_DB"
 schema = "PUBLIC"
 warehouse = "COMPUTE_WH"
