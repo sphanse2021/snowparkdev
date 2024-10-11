@@ -14,7 +14,7 @@ root = Root(conn)
 #create task
 my_task = Task("my_task", StoredProcedureCall(procedures.hello_procedure,stage_location="@dev_deployment" ),warehouse="compute_wh", schedule=timedelta(days=1) )
 tasks = root.databases["demo_db"].schemas["public"].tasks
-tasks.create(my_task)  
+# tasks.create(my_task)  
 
 
 def task_branch_condition(session:Session) -> str:
@@ -80,7 +80,8 @@ with DAG("my_dag_task_branch", schedule=timedelta(days=1),packages=["snowflake-s
 
     dag_task_branch = DAGTaskBranch("task_branch", task_branch_condition, warehouse="compute_wh")
     
-    dag_task_1 >> dag_task_2 >> [dag_task_3b, dag_task_4b]
+dag_task_1 >> dag_task_2 >> dag_task_branch
+dag_task_branch >> [dag_task_3b, dag_task_4b]
 
 schema = root.databases["demo_db"].schemas["public"]
 dag_op2 = DAGOperation(schema)  
