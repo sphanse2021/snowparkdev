@@ -21,3 +21,8 @@ snowpark:
       handler: "procedures.test_procedure"
       signature: ""
       returns: string
+    - name: test_procedure2
+      handler: "procedures.test_procedure2"
+      signature: ""
+      returns: string
+
