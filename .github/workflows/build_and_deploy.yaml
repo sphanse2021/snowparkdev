@@ -1,4 +1,4 @@
-name: Deploy Snowpark Apps
+name: Deploy DE Project Snowpark Apps
 
 # Controls when the action will run. 
 on:
