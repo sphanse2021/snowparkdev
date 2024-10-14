@@ -38,7 +38,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
+          repository: sphanse2021/snowparkdev
           ref: dev
+
+      - name: Setup Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'          
 
       - name: Install Python packages
         run: pip install -r requirements.txt
@@ -62,29 +68,29 @@ jobs:
         # run: echo $SNOWFLAKE_CONNECTIONS_my_test_connection_ACCOUNT
         run: python deploy_snowpark_app.py $GITHUB_WORKSPACE/first_snowpark2_project
 
-      - name: cliaction
-        uses: Snowflake-Labs/snowflake-cli-action@v1
-        with:
-            cli-version: "latest"
-            default-config-file-path: "config.toml"
+      #- name: cliaction
+      #  uses: Snowflake-Labs/snowflake-cli-action@v1
+      #  with:
+      #      cli-version: "latest"
+      #      default-config-file-path: "config.toml"
         
           # Use the CLI
-      - name: Test version
-        run: |
-           snow --version
-           snow connection test
+      #- name: Test version
+      #  run: |
+      #     snow --version
+      #     snow connection test
 
-      - name: deploy code
-        working-directory: first_snowpark_project
-        run: |
-            snow snowpark \
-                 deploy --replace \
-                  --temporary-connection \
-                  --account $SNOWFLAKE_ACCOUNT \
-                  --user pradeep \
-                  --database $SNOWFLAKE_DATABASE \
-                  --role $SNOWFLAKE_ROLE \
-                  --warehouse "COMPUTE_WH"
+      #- name: deploy code
+      #  working-directory: first_snowpark2_project
+      #  run: |
+      #      snow snowpark \
+      #           deploy --replace \
+      #            --temporary-connection \
+      #            --account $SNOWFLAKE_ACCOUNT \
+      #            --user BADGEFOUR \
+      #            --database $SNOWFLAKE_DATABASE \
+      #            --role $SNOWFLAKE_ROLE \
+      #            --warehouse "COMPUTE_WH"
       # - name: run snow
       #   run: snow snowpark build
            
