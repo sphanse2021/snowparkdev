@@ -1,0 +1,1 @@
+select count(*) from SAMPLE_DATA_DB.SAMPLE_SCHEMA1.CUSTOMER; 
